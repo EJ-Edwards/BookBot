@@ -1,20 +1,18 @@
-from stats import count_words
+from stats import get_num_words, get_chars_dict
 
-def get_book_text(filepath):
-    with open(filepath, "r") as f:
-        return f.read()
 
 def main():
     book_path = "books/frankenstein.txt"
     text = get_book_text(book_path)
-
-    # Print first line (for BootDev test)
-    first_line = text.splitlines()[0]
-    print(first_line)
-
-    # Count words and print
-    num_words = count_words(text)
+    num_words = get_num_words(text)
+    chars_dict = get_chars_dict(text)
     print(f"Found {num_words} total words")
+    print(chars_dict)
 
-if __name__ == "__main__":
-    main()
+
+def get_book_text(path):
+    with open(path) as f:
+        return f.read()
+
+
+main()
